@@ -19,4 +19,17 @@ class UserController
 
     }
 
+    public function getUserById(Request $request, Response $response, array $args)
+    {
+        $userDao = new UserDAO();
+
+        $user = $userDao->getUserById($args['id']);
+
+        if(!empty($user)){
+            return $response->withJson($user);
+        }else{
+            return $response->withJson(["mensagem" => "Usuário não encontrado"],404);
+        }
+    }
+
 }

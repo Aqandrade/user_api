@@ -18,4 +18,15 @@ class UserDAO extends Connection
 
         return $users;
     }
+
+    public function getUserById($id)
+    {
+        $sth = $this->pdo->prepare('SELECT * FROM usuario WHERE id = :id');
+
+        $sth->bindValue(':id',$id,\PDO::PARAM_INT);
+
+        $sth->execute();
+
+        return $sth->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
