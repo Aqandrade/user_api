@@ -70,4 +70,26 @@ class UserController
 
     }
 
+    public function createUser(Request $request, Response $response, array $args)
+    {
+        $data = $request->getParsedBody();
+
+        $errors = UserValidator::createUserValidator($data);
+
+        if(!empty($errors))
+            return $response->withJson(["mensagem" => $errors]);
+
+        $userDao = new UserDao();
+
+        $userDao->createUser(
+            new User(
+                $data['nome'],
+                DateHelper::toDb($data['data_nascimento']
+            )
+        ));
+
+        return $response->withJson(["mensagem" => "Usuário criado com sucesso"]);
+
+    }
+
 }

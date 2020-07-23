@@ -57,4 +57,15 @@ class UserDAO extends Connection
             $user->getDataNascimento(),
             $id]);
     }
+
+    public function createUser(User $user)
+    {
+        $sth = $this->pdo->prepare('INSERT INTO usuario VALUES (NULL,:nome,:data_nascimento) ');
+
+        $sth->execute([
+            'nome' => $user->getNome(),
+            'data_nascimento' => $user->getDataNascimento()
+        ]);
+
+    }
 }
