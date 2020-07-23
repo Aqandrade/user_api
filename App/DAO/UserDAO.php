@@ -39,4 +39,22 @@ class UserDAO extends Connection
         return $sth->execute();
 
     }
+
+    public function updateUser(User $user,$id)
+    {
+        $sth = $this->pdo->prepare(
+            "UPDATE
+                usuario
+            SET
+                nome = ?,
+                data_nascimento = ?
+            WHERE
+                id = ?"
+        );
+
+        $sth->execute([
+            $user->getNome(),
+            $user->getDataNascimento(),
+            $id]);
+    }
 }

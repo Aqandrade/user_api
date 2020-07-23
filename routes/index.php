@@ -12,4 +12,6 @@ $app->get('/user/{id}',UserController::class.':getUserById');
 
 $app->delete('/user/{id}', UserController::class.':deleteUser');
 
+$app->put('/user',UserController::class.':updateUser');
+
 $app->run();

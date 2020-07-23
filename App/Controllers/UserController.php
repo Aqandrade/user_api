@@ -8,6 +8,12 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 use App\DAO\UserDAO as UserDAO;
 
+use App\Models\User as User;
+
+use App\Helpers\DateHelper as DateHelper;
+
+use App\Validators\UserValidator as UserValidator;
+
 class UserController
 {
 
@@ -40,6 +46,28 @@ class UserController
 
         return $response->withJson(["mensagem" => "Usuário deletado com sucesso"]);
         
+    }
+
+    public function updateUser(Request $request, Response $response, array $args)
+    {
+        $data = $request->getParsedBody();
+
+        $errors = UserValidator::updateUserValidator($data);
+
+        if(!empty($errors))
+            return $response->withJson(["mensagem" => $errors]);
+
+        $userDao = new UserDao();
+
+        $user = new User(
+                    $data['nome'],
+                    DateHelper::toDb($data['data_nascimento']));
+
+
+        $userDao->updateUser($user,$data['id']);
+
+        return $response->withJson(['mensagem' => 'Usuário atualizado com sucesso']);
+
     }
 
 }
