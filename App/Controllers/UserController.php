@@ -32,4 +32,14 @@ class UserController
         }
     }
 
+    public function deleteUser(Request $request, Response $response, array $args)
+    {
+        $userDao = new UserDAO();
+
+        $userDao->deleteUser($args['id']);
+
+        return $response->withJson(["mensagem" => "Usuário deletado com sucesso"]);
+        
+    }
+
 }

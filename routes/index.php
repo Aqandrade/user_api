@@ -10,4 +10,6 @@ $app->get('/',UserController::class.':getUsers');
 
 $app->get('/user/{id}',UserController::class.':getUserById');
 
+$app->delete('/user/{id}', UserController::class.':deleteUser');
+
 $app->run();

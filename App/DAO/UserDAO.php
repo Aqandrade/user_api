@@ -29,4 +29,14 @@ class UserDAO extends Connection
 
         return $sth->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function deleteUser($id)
+    {       
+        $sth = $this->pdo->prepare('DELETE FROM usuario WHERE id = :id ');
+        
+        $sth->bindValue(':id',$id,\PDO::PARAM_INT);
+
+        return $sth->execute();
+
+    }
 }
