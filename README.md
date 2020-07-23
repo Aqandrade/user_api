@@ -4,7 +4,7 @@ Ao clonar o projeto, para executa-lo e efetuar algumas requisições, é necess�
 
 1 – Execute na raiz do projeto: </br>
 
-    <code> “composer update” </code> </br>
+     “composer update” </br>
 
 2 – Execute o DUMP sql que está na raiz do projeto com o nome de “dump_finnet_user_api.sql” no seu gerenciador de banco de dados.</br>
 
@@ -12,7 +12,7 @@ Ao clonar o projeto, para executa-lo e efetuar algumas requisições, é necess�
 
 4 –Para executa-lo, rode o comando na raiz do projeto:
 
-    <code> php -S localhost:8000 </code>
+     php -S localhost:8000 
 
 Exemplo de Requisições:
 
