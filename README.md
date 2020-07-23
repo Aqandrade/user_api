@@ -32,7 +32,7 @@ PUT: localhost:8000/user/ - Atualiza Usuário.
          Exemplo JSON:
          
           {
-               "id":"2"
+               "id":"2",
                "nome":"Walter White",
                "data_nascimento" : "07/09/2010"
           }
